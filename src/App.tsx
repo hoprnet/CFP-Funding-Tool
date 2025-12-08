@@ -1,11 +1,55 @@
-import './index.css'
-import './fonts.css'
+import React from 'react'
 
 
 function App() {
+  const [address, setAddress] = React.useState('');
+  const [secretCode, setSecretCode] = React.useState('');
+  const filled = address.length > 0 && secretCode.length > 0;
+  const [pending, setPending] = React.useState(false);
+  const [error, setError] = React.useState('');
+  const [message, setMessage] = React.useState('');
+
+  async function getAirdrop(address: string, secretCode: string) {
+    setPending(true);
+    setError('');
+    setMessage('');
+    let rez = null;
+    try {
+      const body = {
+          address: address,
+          code: secretCode
+      };
+      const response = await fetch('https://webapi.hoprnet.org/api/cfp-funding-tool/airdrop', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(body)
+      });
+      rez = await response.json();
+    } catch (error) {
+      setError('Network error. Please try again later.');
+    } finally {
+      setPending(false);
+    }
+    return rez;
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const result = await getAirdrop(address, secretCode);
+    if(result?.error){
+      setError(result.error);
+    }
+    if(result?.message){
+      setMessage(result.message);
+    }
+    console.log('Airdrop result:', result);
+  }
+
 
   return (
-    <body>
+    <div className="App">
       <header className="header">
         <div className="container">
           <div className="header-content">
@@ -44,12 +88,14 @@ function App() {
                       name="recipientAddress"
                       placeholder="0x..."
                       required
-                      autocomplete="off"
-                    >
+                      autoComplete="off"
+                      onChange={e=>{
+                        setAddress(e.target.value)
+                      }}
+                    />
                       <div className="input-icon">
                         <i className="fas fa-wallet"></i>
                       </div>
-                    </input>
                   </div>
                   <div className="error-message" id="recipientAddressError"></div>
                 </div>
@@ -66,33 +112,51 @@ function App() {
                       name="secretCode"
                       placeholder="Enter your secret code..."
                       required
-                      autocomplete="off"
-                    >
+                      autoComplete="off"
+                      onChange={e=>{
+                        setSecretCode(e.target.value)
+                      }}
+                    />
                       <div className="input-icon">
                         <i className="fas fa-key"></i>
                       </div>
-                    </input>
                   </div>
                   <div className="error-message" id="secretCodeError"></div>
                 </div>
 
-                <button type="submit" className="claim-btn" id="claimBtn">
+                <button
+                  type="submit"
+                  className={"claim-btn" + (filled ? " filled" : " disabled")}
+                  id="claimBtn"
+                  onClick={handleSubmit}
+                  disabled={!filled || pending}
+                >
                   <div className="btn-content">
                     <div className="spinner" id="spinner"></div>
                     <span id="btnText">
                       <i className="fas fa-gift"></i>
-                      Claim Airdrop
+                      {pending ? "Claiming..." : "Claim Airdrop"}
                     </span>
                   </div>
                 </button>
               </form>
 
-              <div className="result" id="result">
+              <div
+                className={"result" + (error ? " error" : " success")}
+                id="result"
+                style={{display: error || message ? 'block' : 'none'}}
+              >
                 <div className="result-content">
                   <div className="result-icon" id="resultIcon"></div>
-                  <h3 id="resultTitle"></h3>
-                  <p id="resultMessage"></p>
-                  <div id="resultDetails"></div>
+                  <h3 id="resultTitle">
+                    {error ? 'Error Claiming Airdrop' : 'Airdrop Successful!'}
+                  </h3>
+                  <p id="resultMessage">
+                    {error}
+                  </p>
+                  <div id="resultDetails">
+                    {message}
+                  </div>
                 </div>
               </div>
             </div>
@@ -117,8 +181,7 @@ function App() {
         </div>
       </footer>
 
-      <script src="script.js"></script>
-    </body>
+    </div>
   )
 }
 
