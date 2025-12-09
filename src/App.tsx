@@ -177,6 +177,26 @@ function App() {
             <div className="footer-text">
               <p>&copy; 2024 wxHOPR Airdrop. Powered by Gnosis Chain.</p>
             </div>
+            <div className="socials">
+                <a href="https://x.com/Gnosis_VPN" target="_blank" rel="noopener noreferrer" aria-label="X" className="block w-6 h-6">
+                  <img alt="X logo" loading="lazy" width="24" height="24" decoding="async" src="/socials/footer_social_x.svg"/>
+                </a>
+                <a href="https://mastodon.social/@GnosisVPN" target="_blank" rel="noopener noreferrer" aria-label="Mastodon" className="block w-6 h-6">
+                  <img alt="Mastodon logo" loading="lazy" width="24" height="24" decoding="async" src="/socials/footer_social_mastodon.svg"/>
+                </a>
+                <a href="https://bsky.app/profile/gnosisvpn.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky" className="block w-6 h-6">
+                  <img alt="Bluesky logo" loading="lazy" width="24" height="24" decoding="async" src="/socials/footer_social_bluesky.svg"/>
+                </a>
+                <a href="https://warpcast.com/gnosisvpn" target="_blank" rel="noopener noreferrer" aria-label="Warpcast" className="block w-6 h-6">
+                  <img alt="Warpcast logo" loading="lazy" width="24" height="24" decoding="async" src="/socials/footer_social_warpcast.svg"/>
+                </a>
+                <a href="https://github.com/gnosis/gnosis_vpn-client/" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="block w-6 h-6">
+                  <img alt="GitHub logo" loading="lazy" width="24" height="24" decoding="async" src="/socials/footer_social_github.svg"/>
+                </a>
+                <a href="https://discord.gg/gnosis" target="_blank" rel="noopener noreferrer" aria-label="Discord" className="block w-6 h-6">
+                  <img alt="Discord logo" loading="lazy" width="24" height="24" decoding="async" src="/socials/footer_social_discord.svg"/>
+                </a>
+              </div>
           </div>
         </div>
       </footer>

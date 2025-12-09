@@ -385,6 +385,21 @@ body {
     opacity: 0.8;
 }
 
+.footer .socials {
+    display: flex;
+    gap: 16px;
+    a {
+        width: 24px;
+        height: 24px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            color: transparent
+        }
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     :root {
