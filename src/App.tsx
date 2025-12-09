@@ -1,5 +1,6 @@
 import React from 'react'
 
+const webApiUrl = import.meta.env.VITE_WEB_API_URL;
 
 function App() {
   const [address, setAddress] = React.useState('');
@@ -19,7 +20,7 @@ function App() {
           address: address,
           code: secretCode
       };
-      const response = await fetch('https://webapi.hoprnet.org/api/cfp-funding-tool/airdrop', {
+      const response = await fetch(`${webApiUrl}/api/cfp-funding-tool/airdrop`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
@@ -68,7 +69,7 @@ function App() {
           <section className="hero">
             <h1>Claim Your wxHOPR and xDai</h1>
             <p className="hero-description">
-              Get your wxHOPR and xDai to use Gnosis VPN.
+              Get your wxHOPR and xDai to test Gnosis VPN.
               Enter your wallet address and secret code to claim your airdrop.
             </p>
           </section>
