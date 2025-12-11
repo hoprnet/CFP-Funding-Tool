@@ -14,9 +14,7 @@ function App() {
     const url = window.location.href;
     const urlObj = new URL(url);
     const codeParam = urlObj.searchParams.get('code');
-    console.log('codeParam:', urlObj, codeParam);
     if(codeParam){
-      console.log('set codeParam:');
       setSecretCode(codeParam);
     }
   }, []);
