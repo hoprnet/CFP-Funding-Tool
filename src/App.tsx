@@ -83,7 +83,7 @@ function App() {
             <h1>Claim Your wxHOPR and xDai</h1>
             <p className="hero-description">
               Get your wxHOPR and xDai to test Gnosis VPN.
-              Enter your wallet address and secret code to claim your airdrop.
+              Enter your Gnosis VPN address and secret code to claim your airdrop.
             </p>
           </section>
 
@@ -93,7 +93,7 @@ function App() {
                 <div className="form-group">
                   <label className="recipientAddress">
                     <i className="fas fa-wallet"></i>
-                    Recipient Address
+                    Gnosis VPN Address
                   </label>
                   <div className="input-container">
                     <input
@@ -186,11 +186,10 @@ function App() {
         <div className="container">
           <div className="footer-content">
             <div className="footer-links">
-              <a href="#" className="footer-link">About wxHOPR</a>
-              <a href="#" className="footer-link">Gnosis VPN</a>
-              <a href="#" className="footer-link">Support</a>
+              <a href="https://hoprnet.org" target="_blank" rel="noopener noreferrer" className="footer-link">About wxHOPR</a>
+              <a href="https://vpn.gnosis.eth.limo/" target="_blank" rel="noopener noreferrer" className="footer-link">Gnosis VPN</a>
             </div>
-            <div className="footer-text">
+            {/* <div className="footer-text">
               <p>&copy; 2024 wxHOPR Airdrop. Powered by Gnosis Chain.</p>
             </div>
             <div className="socials">
@@ -212,7 +211,7 @@ function App() {
                 <a href="https://discord.gg/gnosis" target="_blank" rel="noopener noreferrer" aria-label="Discord" className="block w-6 h-6">
                   <img alt="Discord logo" loading="lazy" width="24" height="24" decoding="async" src="/socials/footer_social_discord.svg"/>
                 </a>
-              </div>
+              </div> */}
           </div>
         </div>
       </footer>
