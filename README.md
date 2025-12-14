@@ -71,3 +71,42 @@ export default defineConfig([
   },
 ])
 ```
+
+### Enviorement variables
+
+```.env
+VITE_WEB_API_URL=
+```
+
+## Available Scripts
+
+### `yarn`
+
+Install all the dependencies.
+
+### `yarn dev`
+
+Runs the app in the development mode.\
+Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `yarn build`
+
+Builds the cfp-funding-tool-ui.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+### `docker build -t cfp-funding-tool-ui .`
+
+Builds the cfp-funding-tool-ui docker image with the name `node-admin`.
+
+### `docker run -d -p 3000:80 --name cfp-funding-tool-ui cfp-funding-tool-ui`
+
+Runs the cfp-funding-tool-ui container exposing the 3000 port.
+To access the cfp-funding-tool-ui you should go to `http://localhost:3000/`
+
+## Deployment process
+
+To contribute to this repository you will need to create a pull request. More information about the existing automated workflows can be found in [GitHub Actions](./.github/workflows/README.md)
